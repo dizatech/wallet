@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'namespace' => 'Wallet\Http\Controllers',
+    'namespace' => 'Modules\Wallet\Http\Controllers',
     'prefix'    => 'panel',
     'middleware'=> ['web', 'auth', 'verified']
 ],function () {
@@ -11,7 +11,7 @@ Route::group([
     Route::resource('transaction', 'UserWalletTransactionController');
 });
 Route::group([
-    'namespace' => 'Wallet\Http\Controllers',
+    'namespace' => 'Modules\Wallet\Http\Controllers',
     'prefix' => 'account',
     'middleware' => ['web', 'auth', 'verified']
 ], function (){
