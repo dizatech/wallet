@@ -11,14 +11,14 @@ class WalletController extends Controller
 {
     public function index()
     {
-        return view('vendor.wallet.panel.index', [
+        return view('vendor.wallet.panel.wallet.index', [
             'wallets' =>    Wallet::query()->paginate()
         ]);
     }
 
     public function create()
     {
-        return view('vendor.wallet.panel.create');
+        return view('vendor.wallet.panel.wallet.create');
     }
 
     public function store(WalletRequest $request, Wallet $wallet)
@@ -35,7 +35,7 @@ class WalletController extends Controller
 
     public function edit(Wallet $wallet)
     {
-        return view('vendor.wallet.panel.edit',[
+        return view('vendor.wallet.panel.wallet.edit',[
             'wallet' => $wallet
         ]);
     }
