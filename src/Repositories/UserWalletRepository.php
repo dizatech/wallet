@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Wallet\Repositories;
+namespace Modules\Wallet\Repositories;
 
 
-use Wallet\Models\UserWalletTransaction;
-use Wallet\Models\Wallet;
+use Modules\Wallet\Models\UserWalletTransaction;
+use Modules\Wallet\Models\Wallet;
 
 class UserWalletRepository
 {

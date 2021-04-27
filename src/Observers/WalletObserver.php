@@ -1,11 +1,11 @@
 <?php
 
-namespace Wallet\Observers;
+namespace Modules\Wallet\Observers;
 
-use Wallet\Facades\UserWalletFacade;
-use Wallet\Models\UserWallet;
-use Wallet\Models\UserWalletTransaction;
-use Wallet\Models\Wallet;
+use Modules\Wallet\Facades\UserWalletFacade;
+use Modules\Wallet\Models\UserWallet;
+use Modules\Wallet\Models\UserWalletTransaction;
+use Modules\Wallet\Models\Wallet;
 
 class WalletObserver
 {

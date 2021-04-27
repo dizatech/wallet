@@ -1,24 +1,24 @@
 <?php
 
-namespace Wallet\Http\Controllers;
+namespace Modules\Wallet\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Wallet\Http\Requests\WalletRequest;
-use Wallet\Models\Wallet;
+use Modules\Wallet\Http\Requests\WalletRequest;
+use Modules\Wallet\Models\Wallet;
 
 class WalletController extends Controller
 {
     public function index()
     {
-        return view('wallet::wallet.index', [
+        return view('vendor.wallet.panel.index', [
             'wallets' =>    Wallet::query()->paginate()
         ]);
     }
 
     public function create()
     {
-        return view('wallet::wallet.create');
+        return view('vendor.wallet.panel.create');
     }
 
     public function store(WalletRequest $request, Wallet $wallet)
@@ -26,7 +26,7 @@ class WalletController extends Controller
         $wallet->fill($request->all());
         $wallet->save();
         session()->flash('success', 'ثبت کیف پول با موفقیت انجام شد.');
-        return redirect()->route('wallet.edit', $wallet);
+        return redirect()->route('vendor.wallet.panel.edit', $wallet);
     }
 
     public function show(Wallet $wallet)
@@ -35,7 +35,7 @@ class WalletController extends Controller
 
     public function edit(Wallet $wallet)
     {
-        return view('wallet::wallet.edit',[
+        return view('vendor.wallet.panel.edit',[
             'wallet' => $wallet
         ]);
     }

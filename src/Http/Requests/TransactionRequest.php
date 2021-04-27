@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallet\Http\Requests;
+namespace Modules\Wallet\Http\Requests;
 
 use App\Facades\ValidationCommonHelperFacade;
 use Illuminate\Foundation\Http\FormRequest;

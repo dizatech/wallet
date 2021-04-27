@@ -1,16 +1,16 @@
 <?php
 
-namespace Wallet\Http\Controllers;
+namespace Modules\Wallet\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Wallet\Http\Requests\TransactionRequest;
-use Wallet\Models\UserWallet;
-use Wallet\Models\UserWalletTransaction;
-use Wallet\Models\Wallet;
+use Modules\Wallet\Http\Requests\TransactionRequest;
+use Modules\Wallet\Models\UserWallet;
+use Modules\Wallet\Models\UserWalletTransaction;
+use Modules\Wallet\Models\Wallet;
 
 class UserWalletTransactionController extends Controller
 {
@@ -21,7 +21,7 @@ class UserWalletTransactionController extends Controller
 
         $transactions = $this->filter($request, $transactions);
 
-        return view('mahamaxWallet::transaction.index', [
+        return view('vendor.wallet.panel.transaction.index', [
             'transactions' => $transactions->paginate(),
             'users'        => User::query()->get(),
             'wallets'      => Wallet::query()->where('is_active', 1)->get()
@@ -30,7 +30,7 @@ class UserWalletTransactionController extends Controller
 
     public function create(Request $request)
     {
-        return view('mahamaxWallet::transaction.create', [
+        return view('vendor.wallet.panel.transaction.create', [
             'users' => User::query()->get(),
             'user_id' => $request->user_id ?? 0,
             'wallets' => Wallet::query()->where('is_active', 1)->get()
@@ -94,7 +94,7 @@ class UserWalletTransactionController extends Controller
             })
             ->get();
 
-        return view('mahamaxWallet::frontWallet.walletUser', compact(['balance', 'wallets']));
+        return view('vendor.wallet.home.walletUser', compact(['balance', 'wallets']));
     }
 
     public function wallet($id)
@@ -105,7 +105,7 @@ class UserWalletTransactionController extends Controller
 
         $transactions = UserWalletTransaction::query()->where('user_id', $uid)->get();
 
-        return view('mahamaxWallet::frontWallet.wallet', compact('wallet', 'transactions'));
+        return view('vendor.wallet.home.wallet', compact('wallet', 'transactions'));
     }
 
     public function filter(Request $request, Builder $transactions): Builder

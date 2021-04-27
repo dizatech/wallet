@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallet\database\seeders;
+namespace Modules\Wallet\database\seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Role;

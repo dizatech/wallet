@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallet\Facades;
+namespace Modules\Wallet\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

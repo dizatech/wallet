@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\MahamaxWallet\database\seeders;
+namespace Modules\Wallet\database\seeders;
 
 use App\Models\Permission;
 use Dizatech\ModuleMenu\Models\ModuleMenu;
@@ -16,13 +16,13 @@ class WalletMenuPermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $mahamaxWallet = ModuleMenu::where('name', 'mahamaxWallet')->first();
-        $mahamax_Wallet_manage = ModuleMenu::where('name', 'mahamax_wallet_manage')->first();
-        $mahamax_transaction_index = ModuleMenu::where('name', 'mahamax_transaction_index')->first();
+        $wallet = ModuleMenu::where('name', 'wallet')->first();
+        $wallet_manage = ModuleMenu::where('name', 'wallet_manage')->first();
+        $transaction_index = ModuleMenu::where('name', 'transaction_index')->first();
 
-        $mahamaxWallet->permissions()->sync(Permission::where('name', 'mahamax_wallet')->pluck('id'));
-        $mahamax_Wallet_manage->permissions()->sync(Permission::where('name', 'mahamax_wallet_manage')->pluck('id'));
-        $mahamax_transaction_index->permissions()->sync(Permission::where('name', 'mahamax_transaction_index')->pluck('id'));
+        $wallet->permissions()->sync(Permission::where('name', 'wallet')->pluck('id'));
+        $wallet_manage->permissions()->sync(Permission::where('name', 'wallet_manage')->pluck('id'));
+        $transaction_index->permissions()->sync(Permission::where('name', 'transaction_index')->pluck('id'));
 
     }
 }
