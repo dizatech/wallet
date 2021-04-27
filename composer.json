@@ -16,13 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Wallet\\": "src/"
+            "Modules\\Wallet\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Wallet\\WalletServiceProvider"
+                "Modules\\Wallet\\WalletServiceProvider"
             ]
         }
     }
