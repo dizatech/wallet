@@ -30,7 +30,7 @@ class WalletServiceProvider extends ServiceProvider
          $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
          $this->mergeConfigFrom(__DIR__ . '/config/wallet.php', 'wallet');
          $this->publishes([
-                __DIR__.'/config/wallet.php' =>config_path('wallet'),
+             __DIR__.'/config/wallet.php' => config_path('wallet.php'),
              __DIR__.'/views/frontWallet/wallet.blade.php' => resource_path('views/vendor/wallet/home/wallet.blade.php'),
              __DIR__.'/views/frontWallet/walletUser.blade.php' => resource_path('views/vendor/wallet/home/walletUser.blade.php'),
 

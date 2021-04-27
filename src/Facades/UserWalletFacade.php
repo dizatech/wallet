@@ -9,7 +9,7 @@ namespace Modules\Wallet\Facades;
  * @method static array allWithPaginate()
  * @method static array getActive()
  *
- * @see \Wallet\Repositories\UserWalletRepository
+ * @see \Modules\Wallet\Repositories\UserWalletRepository
  */
 class UserWalletFacade extends BaseFacade
 {
