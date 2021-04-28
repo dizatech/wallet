@@ -10,7 +10,7 @@
     @endslot
 
     @slot('breadcrumb')
-        <li class="breadcrumb-item"><a href="{{ route('order.index') }}">همه کیف پول‌ها</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('wallet.index') }}">همه کیف پول‌ها</a></li>
         <li class="breadcrumb-item">لیست کیف پول‌ها</li>
     @endslot
 

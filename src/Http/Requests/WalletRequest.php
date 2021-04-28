@@ -21,7 +21,7 @@ class WalletRequest extends FormRequest
     {
         return [
             'title'     => ['required'],
-            'name'      => ['required', 'unique:wallets'],
+            'name'      => (request()->isMethod('PATCH'))? ['nullable']: ['required','unique:wallets'],
             'is_active' => ['required']
         ];
     }
