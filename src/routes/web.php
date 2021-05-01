@@ -15,6 +15,6 @@ Route::group([
     'prefix' => 'account',
     'middleware' => ['web', 'auth', 'verified']
 ], function (){
-    Route::get('account/wallet', 'UserWalletTransactionController@walletsIndex')->name('account.walletsIndex');
-    Route::get('account/wallet/{id}', 'UserWalletTransactionController@wallet')->name('account.wallet');
+    Route::get('wallet', 'UserWalletTransactionController@walletsIndex')->name('account.walletsIndex');
+    Route::get('wallet/{id}', 'UserWalletTransactionController@wallet')->name('account.wallet');
 });
