@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWalletTable extends Migration
+class CreateUserWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserWalletTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_wallet', function (Blueprint $table) {
+        Schema::create('user_wallets', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('wallet_id');
