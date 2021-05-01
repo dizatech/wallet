@@ -38,7 +38,7 @@
                                                 @endcomponent
                                                 <hr class="mt-3 mb-4">
                                                 <div class="message green">
-                                                    <p>مقدار موجود در کیف پول شما {{number_format($wallet)  }} تومان می باشد.</p>
+                                                    <p>مقدار موجود در کیف پول شما {{number_format($user_wallet->balance)  }} تومان می باشد.</p>
                                                 </div>
                                                 <div class="payment_table mt-4">
                                                     <div class="table-responsive">

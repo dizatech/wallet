@@ -100,12 +100,15 @@ class UserWalletTransactionController extends Controller
     public function wallet($id)
     {
         $uid = Auth::user()->id;
-        $wallet = UserWallet::query()->where('user_id', $uid)
-            ->sum('balance');
+        $user_wallet = UserWallet::query()->where('user_id', $uid)
+            ->where('id', $id)->firstOrFail();
 
-        $transactions = UserWalletTransaction::query()->where('user_id', $uid)->get();
+        $transactions = UserWalletTransaction::query()
+            ->where('user_id', $uid)
+            ->where('wallet_id', $user_wallet->wallet_id)
+            ->get();
 
-        return view('vendor.wallet.home.wallet', compact('wallet', 'transactions'));
+        return view('vendor.wallet.home.wallet', compact('user_wallet', 'transactions'));
     }
 
     public function filter(Request $request, Builder $transactions): Builder
