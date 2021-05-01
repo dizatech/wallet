@@ -26,11 +26,10 @@
                                                 <span class="text-danger">*</span>
                                                 <label for="name"><strong>نام کاربر</strong></label>
                                                 <select name="user_id" id="user_id"
-                                                    class="form-control select2 select2-user @error('user_id') is-invalid @enderror">
-
-                                                    @if( old('user_id') )
-                                                        <option value="{{ old('user_id') }}" selected="selected">
-                                                            {{ \App\Models\User::find( old('user_id') )->full_name }}
+                                                        class="form-control select2 select2-user @error('user_id') is-invalid @enderror">
+                                                    @if( old('user_id', request('user_id')) )
+                                                        <option value="{{ old('user_id', request('user_id') ) }}" selected="selected">
+                                                            {{ \App\Models\User::find( old('user_id', request('user_id')) )->full_name }}
                                                         </option>
                                                     @endif
                                                 </select>
