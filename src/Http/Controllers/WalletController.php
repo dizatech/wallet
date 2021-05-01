@@ -26,7 +26,7 @@ class WalletController extends Controller
         $wallet->fill($request->all());
         $wallet->save();
         session()->flash('success', 'ثبت کیف پول با موفقیت انجام شد.');
-        return redirect()->route('vendor.wallet.panel.edit', $wallet);
+        return redirect()->route('wallet.edit', $wallet);
     }
 
     public function show(Wallet $wallet)
