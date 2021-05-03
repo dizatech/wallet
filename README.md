@@ -1,3 +1,5 @@
+# wallet
+=======
 # Laravel Wallet Package
 [![GitHub issues](https://img.shields.io/github/issues/dizatech/wallet?style=flat-square)](https://github.com/dizatech/wallet/issues)
 [![GitHub stars](https://img.shields.io/github/stars/dizatech/wallet?style=flat-square)](https://github.com/dizatech/wallet/stargazers)
@@ -31,10 +33,10 @@ php artisan migrate
 #### seed tables
 ```
 /*add to DatabaseSeeder  the following lines to function run 
-     WalletMenuSeeder::class,
-     WalletMenuPermissionsSeeder::class,
-     WalletPermissionsSeeder::class,
-     WalletRolePermissionsSeeder::class
+       WalletMenuSeeder::class,
+       WalletPermissionsSeeder::class,
+       WalletMenuPermissionsSeeder::class,
+       WalletRolePermissionsSeeder::class
 */
 
 php artisan db:seed

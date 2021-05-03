@@ -1,7 +1,6 @@
 @component('panel.layouts.component', ['title' => 'لیست تراکنش‌ها'])
 
     @slot('style')
-        <link rel="stylesheet" href="{{ asset('modules/css/mahamax-order.css') }}">
     @endslot
 
     @slot('subject')
@@ -202,7 +201,6 @@
     @endslot
 
     @slot('script')
-        <script src="{{ asset('modules/js/mahamax-order.js') }}"></script>
         <script>
             $(".select2:not(.select2-user)").select2({
                 theme: "bootstrap"
