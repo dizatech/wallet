@@ -23,4 +23,11 @@ class UserWalletRepository
         return Wallet::where('is_active', 1)->get();
     }
 
+    public function findActiveWalletByTitle($search) {
+        return Wallet::query()
+            ->where(function ($query) use ($search) {
+                $query->where('is_active', 1)->where('title', 'LIKE', ['%'. $search . '%']);
+            })->get();
+    }
+
 }
