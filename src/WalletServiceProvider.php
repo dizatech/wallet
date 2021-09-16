@@ -5,6 +5,8 @@ namespace Modules\Wallet;
 use Illuminate\Support\ServiceProvider;
 use Modules\Wallet\Models\UserWalletTransaction;
 use Modules\Wallet\Observers\WalletObserver;
+use Modules\Wallet\Facades\UserWalletFacade;
+use Modules\Wallet\Repositories\UserWalletRepository;
 
 class WalletServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class WalletServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        UserWalletFacade::shouldProxyTo(UserWalletRepository::class);
     }
 
     /**

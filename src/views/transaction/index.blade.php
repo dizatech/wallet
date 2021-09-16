@@ -1,6 +1,7 @@
 @component('panel.layouts.component', ['title' => 'لیست تراکنش‌ها'])
 
     @slot('style')
+        <link rel="stylesheet" href="{{ asset('modules/css/mahamax-order.css') }}">
     @endslot
 
     @slot('subject')
@@ -173,9 +174,19 @@
                                             <tr>
                                                 <td>{{ digitsToEastern($transaction->id) }}</td>
                                                 <td>{{ digitsToEastern(jdate($transaction->created_at)->format('H:i:s - Y/m/d')) }}</td>
-                                                <td>{{ $transaction->user->full_name }}</td>
+                                                <td>
+                                                    @if( $transaction->user )
+                                                        {{ $transaction->user->full_name }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $transaction->wallet->title }}</td>
-                                                <td>{{ $transaction->creator->full_name }}</td>
+                                                <td>
+                                                    @if( $transaction->creator )
+                                                        {{ $transaction->creator->full_name }}
+                                                    @elseif( $transaction->creator_id == 0 )
+                                                        تراکنش سیستمی
+                                                    @endif
+                                                </td>
                                                 <td>{{ digitsToEastern(number_format($transaction->DebtorLabel)) }}</td>
                                                 <td>{{ digitsToEastern(number_format($transaction->CreditorLabel)) }}</td>
                                                 <td>{{ $transaction->description }}</td>
