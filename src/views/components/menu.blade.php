@@ -15,5 +15,10 @@
                 <i class="icon fa fa-circle-o"></i>تراکنش‌ها
             </a>
         </li>
+        <li class="">
+            <a class="treeview-item pl-3 {{ isActive(['wallet.withdraw.index']) }}" href="{{ route('wallet.withdraw.index') }}">
+                <i class="icon fa fa-circle-o"></i>درخواست‌های برداشت وجه
+            </a>
+        </li>
     </ul>
 </li>

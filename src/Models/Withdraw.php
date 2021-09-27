@@ -18,11 +18,6 @@ class Withdraw extends Model
         return $this->belongsTo(UserWallet::class);
     }
 
-    public function user()
-    {
-        return $this->hasOneThrough(User::class, UserWallet::class, 'user_id', 'id');
-    }
-
     public function getStatusLabelAttribute()
     {
         switch ($this->status) {

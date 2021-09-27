@@ -7,6 +7,9 @@ Route::group([
     'prefix'    => 'panel',
     'middleware'=> ['web', 'auth', 'verified']
 ],function () {
+    Route::get('wallet/withdraw', 'WithdrawAdminController@index')->name('wallet.withdraw.index');
+    Route::patch('wallet/withdraw/{withdraw}/ajax_cancel', 'WithdrawAdminController@cancel')->name('wallet.withdraw.cancel');
+    Route::patch('wallet/withdraw/{withdraw}/ajax_complete', 'WithdrawAdminController@complete')->name('wallet.withdraw.complete');
     Route::resource('wallet', 'WalletController');
     Route::resource('transaction', 'UserWalletTransactionController');
 });
