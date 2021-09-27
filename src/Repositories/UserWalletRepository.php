@@ -3,7 +3,7 @@
 
 namespace Modules\Wallet\Repositories;
 
-
+use Illuminate\Support\Facades\Auth;
 use Modules\Wallet\Models\UserWalletTransaction;
 use Modules\Wallet\Models\Wallet;
 
@@ -28,6 +28,25 @@ class UserWalletRepository
             ->where(function ($query) use ($search) {
                 $query->where('is_active', 1)->where('title', 'LIKE', ['%'. $search . '%']);
             })->get();
+    }
+
+    public function withdraw($user_wallet, $amount, $description='')
+    {
+        if( $amount > $user_wallet->balance ){
+            return FALSE;
+        }
+
+        $transaction = new UserWalletTransaction();
+        $transaction->fill([
+            'description'   => $description,
+            'creator_id'    => Auth::id(),
+            'wallet_id'     => $user_wallet->wallet_id,
+            'user_id'       => $user_wallet->user_id,
+        ]);
+        $transaction->amount = -1 * $amount;
+        $transaction->save();
+
+        return $transaction;
     }
 
 }
