@@ -16,6 +16,7 @@ class WithdrawController extends Controller
     public function index()
     {
         $withdraws = Withdraw::join('user_wallets', 'withdraws.user_wallet_id', 'user_wallets.id')
+            ->select('withdraws.*')
             ->where('user_wallets.user_id', Auth::id())
             ->paginate();
 
