@@ -45,7 +45,7 @@ class WithdrawRequest extends FormRequest
     protected function prepareForValidation()
     {
         if( isset( $this->amount ) ){
-            $this->merge(['amount' => str_replace(",", "", $this->amount) * 10]); //Toman to Rial
+            $this->merge(['amount' => str_replace(",", "", $this->amount)]);
         }
         if( isset( $this->iban ) ){
             $this->merge(['iban' => "IR" . $this->iban]);

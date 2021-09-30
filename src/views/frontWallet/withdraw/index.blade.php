@@ -38,7 +38,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $withdraw->user_wallet->wallet->title }}</td>
-                                                <td>{{ JUtils::convertNumbers( number_format( $withdraw->amount / 10 ) ) }}</td>
+                                                <td>{{ JUtils::convertNumbers( number_format( $withdraw->amount ) ) }}</td>
                                                 <td>{{ JUtils::convertNumbers( Jalalian::forge( $withdraw->created_at )->format('Y/m/d') ) }}</td>
                                                 <td>{{ $withdraw->status_label }}</td>
                                             </tr>
