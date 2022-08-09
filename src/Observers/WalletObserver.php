@@ -2,6 +2,7 @@
 
 namespace Modules\Wallet\Observers;
 
+use Modules\Wallet\Events\WalletDepositEvent;
 use Modules\Wallet\Facades\UserWalletFacade;
 use Modules\Wallet\Models\UserWallet;
 use Modules\Wallet\Models\UserWalletTransaction;
@@ -11,6 +12,9 @@ class WalletObserver
 {
     public function created(UserWalletTransaction $transaction)
     {
+        if( $transaction->amount > 0 ){
+            WalletDepositEvent::dispatch($transaction);
+        }
         $user_wallet = UserWallet::where('user_id', $transaction->user_id)
             ->where('wallet_id', $transaction->wallet_id)
             ->first();
