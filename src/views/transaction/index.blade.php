@@ -189,7 +189,7 @@
                                                 </td>
                                                 <td>{{ digitsToEastern(number_format($transaction->DebtorLabel)) }}</td>
                                                 <td>{{ digitsToEastern(number_format($transaction->CreditorLabel)) }}</td>
-                                                <td>{{ $transaction->description }}</td>
+                                                <td>{!! nl2br( $transaction->description ) !!}</td>
                                             </tr>
 
 
