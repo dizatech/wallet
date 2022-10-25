@@ -18,9 +18,9 @@ Route::group([
     'prefix' => 'account',
     'middleware' => ['web', 'auth', 'verified']
 ], function (){
-    Route::get('wallet/withdraw', 'WithdrawController@index')->name('account.wallet.withdraw.index');
-    Route::get('wallet', 'UserWalletTransactionController@walletsIndex')->name('account.walletsIndex');
-    Route::get('wallet/{id}', 'UserWalletTransactionController@wallet')->name('account.wallet');
-    Route::get('wallet/{user_wallet}/withdraw/create', 'WithdrawController@create')->name('account.wallet.withdraw.create');
-    Route::post('wallet/{user_wallet}/withdraw/create', 'WithdrawController@store')->name('account.wallet.withdraw.store');
+    // Route::get('wallet/withdraw', 'WithdrawController@index')->name('account.wallet.withdraw.index');
+    // Route::get('wallet', 'UserWalletTransactionController@walletsIndex')->name('account.walletsIndex');
+    // Route::get('wallet/{id}', 'UserWalletTransactionController@wallet')->name('account.wallet');
+    // Route::get('wallet/{user_wallet}/withdraw/create', 'WithdrawController@create')->name('account.wallet.withdraw.create');
+    // Route::post('wallet/{user_wallet}/withdraw/create', 'WithdrawController@store')->name('account.wallet.withdraw.store');
 });
