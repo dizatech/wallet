@@ -23,12 +23,16 @@ class WalletObserver
             $user_wallet->user_id = $transaction->user_id;
             $user_wallet->wallet_id = $transaction->wallet_id;
             $user_wallet->balance = $transaction->amount;
+            $transaction->balance = $transaction->amount;
         }
         else{
-            $user_wallet->balance = UserWalletTransaction::whereUserId($transaction->user_id)
-                ->whereWalletId($transaction->wallet_id)
-                ->sum('amount');
+            $balance = UserWalletTransaction::whereUserId($transaction->user_id)
+            ->whereWalletId($transaction->wallet_id)
+            ->sum('amount');
+            $user_wallet->balance = $balance;
+            $transaction->balance = $balance;
         }
+        $transaction->save();
         $user_wallet->save();
     }
 
