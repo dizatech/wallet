@@ -4,6 +4,7 @@ namespace Modules\Wallet\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Facades\PaymentInquiryHelperFacade;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,15 +51,39 @@ class UserWalletTransactionController extends Controller
             return redirect()->back()->withErrors(['amount' => 'مبلغ قابل برداشت از موجودی حساب شما بیشتر است.'])->withInput();
         }
 
-        $transaction->fill($request->all());
-        $transaction->creator_id = auth()->user()->id;
-        $transaction->wallet_id = $request->wallet_id;
-        if ($request->status_transaction == 'increase') {
-            $transaction->amount = $request->amount;
-        } else {
-            $transaction->amount = -1 * $request->amount;
+        \DB::beginTransaction();
+        try {
+            $transaction->fill($request->all());
+            $transaction->creator_id = auth()->user()->id;
+            $transaction->wallet_id = $request->wallet_id;
+            if ($request->status_transaction == 'increase' || $request->status_transaction =='payment_inquiry') {
+                $transaction->amount = $request->amount;
+            } else {
+                $transaction->amount = -1 * $request->amount;
+            }
+
+            $transaction->save();
+
+            $res = true;
+            if ($request->status_transaction =='payment_inquiry') {
+                $transaction->ref_no = $request->pay_info;
+                $transaction->transaction_date = $request->receipt_date;
+                $transaction->save();
+                $res = PaymentInquiryHelperFacade::settle($request->pay_info, $transaction->id, 'Wallet');
+            }
+
+            if ($res){
+                 \DB::commit();
+            } else {
+                return redirect()->back()->with('error','خطا در ثبت اطلاعات!')->withInput();
+            }
+        }catch (\Exception $e) {
+            \DB::rollback();
+            return redirect()->back()
+            ->with('error',$e->getMessage())->withInput();
         }
-        $transaction->save();
+
+
         session()->flash('success', 'ثبت تراکنش با موفقیت انجام شد.');
         return redirect()->route('transaction.index');
     }
